@@ -1,0 +1,18 @@
+version: '3'
+services:
+        dba:
+                image: mysql
+                environment:
+                        MYSQL_ROOT_PASSWORD: root
+                volumes:
+                        - newvol:/var/lib/mysql
+        web:
+                image: phpmyadmin/phpmyadmin
+                environment:
+                        PMA_HOST: dba
+                ports:
+                        - 8080:80
+                links:
+                        - dba:db
+volumes:
+        newvol:
