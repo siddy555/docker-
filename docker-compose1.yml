@@ -1,0 +1,15 @@
+version: '3'
+services:
+        revproxy:
+                image: jwilder/nginx-proxy
+                environment:
+                        - DEFAULT_HOST=sid
+                volumes:
+                        - /var/run/docker.sock:/tmp/docker.sock
+                ports:
+                        - 80:80
+        web:
+                image: katacoda/docker-http-server:latest
+                environment: 
+                        - VIRTUAL_HOST=sid
+#COMMAND:  docker-compose up -d --scale web=5
