@@ -13,3 +13,7 @@ services:
                 environment: 
                         - VIRTUAL_HOST=sid
 #COMMAND:  docker-compose up -d --scale web=5
+#docker container run -d --network net -p 80:80 -e DEFAULT_HOST=sid -v /var/run/docker.sock:/tmp/docker.sock jwilder/nginx-proxy
+#docker container run -d -p 80 --network net -e VIRTUAL_HOST=sid gitfile
+# "gitfile is my custom website"
+# The reverse proxy should have an environment variable set as DEFAULT_HOST and all proxied container VIRTUAL_HOST.
